@@ -4,6 +4,10 @@
     <logicalFolder name="HeaderFiles"
                    displayName="Header Files"
                    projectFiles="true">
+      <itemPath>Carta.h</itemPath>
+      <itemPath>Cola.h</itemPath>
+      <itemPath>Juego.h</itemPath>
+      <itemPath>Pila.h</itemPath>
     </logicalFolder>
     <logicalFolder name="ResourceFiles"
                    displayName="Resource Files"
@@ -12,6 +16,10 @@
     <logicalFolder name="SourceFiles"
                    displayName="Source Files"
                    projectFiles="true">
+      <itemPath>Carta.cpp</itemPath>
+      <itemPath>Cola.cpp</itemPath>
+      <itemPath>Juego.cpp</itemPath>
+      <itemPath>Pila.cpp</itemPath>
       <itemPath>main.cpp</itemPath>
     </logicalFolder>
     <logicalFolder name="TestFiles"
@@ -36,6 +44,22 @@
       </toolsSet>
       <compileType>
       </compileType>
+      <item path="Carta.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="Carta.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="Cola.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="Cola.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="Juego.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="Juego.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="Pila.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="Pila.h" ex="false" tool="3" flavor2="0">
+      </item>
       <item path="main.cpp" ex="false" tool="1" flavor2="0">
       </item>
     </conf>
@@ -59,6 +83,22 @@
           <developmentMode>5</developmentMode>
         </asmTool>
       </compileType>
+      <item path="Carta.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="Carta.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="Cola.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="Cola.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="Juego.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="Juego.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="Pila.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="Pila.h" ex="false" tool="3" flavor2="0">
+      </item>
       <item path="main.cpp" ex="false" tool="1" flavor2="0">
       </item>
     </conf>
