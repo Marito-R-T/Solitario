@@ -26,7 +26,7 @@ using namespace std;
 class Carta {
 public:
     virtual ~Carta();
-    Carta(int, string, string, bool);
+    Carta(int, string, string, bool, int, int);
 
     bool getMostrado() {
         return mostrando;
@@ -58,18 +58,18 @@ public:
                 return "----------";
             } else if (numero == 2) {
                 if (valor != "10") {
-                    return "|" + valor + "     " + tipo + "|";
+                    return "|" + valor + "     " + tipo + " |";
                 } else {
-                    return "|" + valor + "    " + tipo + "|";
+                    return "|" + valor + "    " + tipo + " |";
                 }
             } else if (numero == 6) {
                 if (valor != "10") {
-                    return "|" + tipo + "     " + valor + "|";
+                    return "|" + tipo + "      " + valor + "|";
                 } else {
-                    return "|" + tipo + "    " + valor + "|";
+                    return "|" + tipo + "     " + valor + "|";
                 }
             } else if (numero == 4) {
-                return "|   " + tipo + "   |";
+                return "|   " + tipo + "    |";
             } else if (numero == 3 || numero == 5) {
                 return "|        |";
             }
@@ -80,6 +80,10 @@ public:
                 return "|////////|";
             }
         }
+    }
+
+    int getID() {
+        return id;
     }
 
     void getNext(Carta *&next) {
@@ -97,8 +101,14 @@ public:
     void setPrevius(Carta *previus) {
         trasera = previus;
     }
+
+    int getNumero() {
+        return numero;
+    };
 private:
     int color;
+    int numero;
+    int id;
     string tipo;
     string valor;
     bool mostrando;

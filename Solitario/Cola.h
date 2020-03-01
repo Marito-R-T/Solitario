@@ -15,31 +15,25 @@
 #define COLA_H
 #include <cstdlib>
 #include <stdlib.h>
-#include <iostream>
 #include <string>
 #include <sstream>
-#include <random>
 #include "Carta.h"
 
 using namespace std;
 
-
 class Cola {
-private:
-    Carta *primera;
-    Carta *ultima;
-    int posicion;
-    bool terminado;
 public:
-    virtual ~Cola();
-    int cantidad;
 
     Cola() {
         cantidad = 0;
     };
+
+    virtual ~Cola();
+    int cantidad;
     void agregarCola(Carta *);
-    void sacarCola();
-    void obtenerCola(int);
+    void sacarCola(Carta *&);
+    void sacarUltima(Carta *&);
+    void obtenerCola(int, Carta *&);
 
     void setTerminado() {
         terminado = false;
@@ -57,11 +51,11 @@ public:
         if (posicion <= 7 && cantidad != 0) {
             string dibujo;
             if (numero == 1) {
-                dibujo = primera->dibujar(posicion);
+                dibujo = ultima->dibujar(posicion);
                 posicion++;
                 return dibujo;
             } else {
-                dibujo = primera->dibujar(posicion);
+                dibujo = ultima->dibujar(posicion);
                 posicion++;
                 return dibujo;
             }
@@ -78,6 +72,11 @@ public:
             }
         }
     }
+private:
+    Carta *primera;
+    Carta *ultima;
+    int posicion;
+    bool terminado;
 };
 
 #endif /* COLA_H */

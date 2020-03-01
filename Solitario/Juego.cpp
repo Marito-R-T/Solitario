@@ -15,8 +15,17 @@
 #include "Pila.h"
 #include "Cola.h"
 #include "Carta.h"
+#include "stdlib.h"
 
 Juego::~Juego() {
+    c1.~Cola();
+    c2.~Cola();
+    for (int i = 0; i < 7; i++) {
+        pilas1[i].~Pila();
+    }
+    for (int i = 0; i < 4; i++) {
+        pilas1[i].~Pila();
+    }
 }
 
 /* JUEGO  */
@@ -40,31 +49,31 @@ Juego::Juego(Pila *&pila) {
         carta->setMostrando(true);
         switch (i) {
             case 0:
-                p1.agregarPila(carta);
+                pilas1[0].agregarPila(carta);
                 break;
             case 1: carta->setMostrando(false);
             case 2:
-                p2.agregarPila(carta);
+                pilas1[1].agregarPila(carta);
                 break;
             case 3: case 4: carta->setMostrando(false);
             case 5:
-                p3.agregarPila(carta);
+                pilas1[2].agregarPila(carta);
                 break;
             case 6: case 7: case 8: carta->setMostrando(false);
             case 9:
-                p4.agregarPila(carta);
+                pilas1[3].agregarPila(carta);
                 break;
             case 10: case 11: case 12: case 13: carta->setMostrando(false);
             case 14:
-                p5.agregarPila(carta);
+                pilas1[4].agregarPila(carta);
                 break;
             case 15: case 16: case 17: case 18: case 19: carta->setMostrando(false);
             case 20:
-                p6.agregarPila(carta);
+                pilas1[5].agregarPila(carta);
                 break;
             case 21: case 22: case 23: case 24: case 25: case 26: carta->setMostrando(false);
             case 27:
-                p7.agregarPila(carta);
+                pilas1[6].agregarPila(carta);
                 break;
         }
     }
@@ -75,51 +84,258 @@ void Juego::Dibujar() {
     c2.setPosicion();
     c1.setTerminado();
     c2.setTerminado();
-    p1.setPosicion();
-    p1.setPosicionCarta();
-    p1.setTerminado();
-    p2.setPosicion();
-    p2.setPosicionCarta();
-    p2.setTerminado();
-    p3.setPosicion();
-    p3.setPosicionCarta();
-    p3.setTerminado();
-    p4.setPosicion();
-    p4.setPosicionCarta();
-    p4.setTerminado();
-    p5.setPosicion();
-    p5.setPosicionCarta();
-    p5.setTerminado();
-    p6.setPosicion();
-    p6.setPosicionCarta();
-    p6.setTerminado();
-    p7.setPosicion();
-    p7.setPosicionCarta();
-    p7.setTerminado();
-    p8.setPosicion();
-    p8.setPosicionCarta();
-    p8.setTerminado();
-    p9.setPosicion();
-    p9.setPosicionCarta();
-    p9.setTerminado();
-    p10.setPosicion();
-    p10.setPosicionCarta();
-    p10.setTerminado();
-    p11.setPosicion();
-    p11.setPosicionCarta();
-    p11.setTerminado();
-    while (!c1.getTerminado() || !c2.getTerminado() || !p1.getTerminado() || !p2.getTerminado()
-            || !p3.getTerminado() || !p4.getTerminado() || !p5.getTerminado() || !p6.getTerminado()
-            || !p7.getTerminado() || !p8.getTerminado() || !p9.getTerminado() || !p10.getTerminado() || !p11.getTerminado()) {
-        cout << "    " << c1.dibujar(1) << "    " << c2.dibujar(2) << "   |   " << p1.Dibujar() << "    " << p2.Dibujar() << "    " << p3.Dibujar()
-                << "    " << p4.Dibujar() << "    " << p5.Dibujar() << "    " << p6.Dibujar() << "    " << p7.Dibujar()
-                << "   |   " << p8.Dibujar() << "    " << p9.Dibujar() << "    " << p10.Dibujar() << "    " << p11.Dibujar() << endl;
+    pilas1[0].setPosicion();
+    pilas1[0].setPosicionCarta();
+    pilas1[0].setTerminado();
+    pilas1[1].setPosicion();
+    pilas1[1].setPosicionCarta();
+    pilas1[1].setTerminado();
+    pilas1[2].setPosicion();
+    pilas1[2].setPosicionCarta();
+    pilas1[2].setTerminado();
+    pilas1[3].setPosicion();
+    pilas1[3].setPosicionCarta();
+    pilas1[3].setTerminado();
+    pilas1[4].setPosicion();
+    pilas1[4].setPosicionCarta();
+    pilas1[4].setTerminado();
+    pilas1[5].setPosicion();
+    pilas1[5].setPosicionCarta();
+    pilas1[5].setTerminado();
+    pilas1[6].setPosicion();
+    pilas1[6].setPosicionCarta();
+    pilas1[6].setTerminado();
+    pilas2[0].setPosicion();
+    pilas2[0].setPosicionCarta();
+    pilas2[0].setTerminado();
+    pilas2[1].setPosicion();
+    pilas2[1].setPosicionCarta();
+    pilas2[1].setTerminado();
+    pilas2[2].setPosicion();
+    pilas2[2].setPosicionCarta();
+    pilas2[2].setTerminado();
+    pilas2[3].setPosicion();
+    pilas2[3].setPosicionCarta();
+    pilas2[3].setTerminado();
+    while (!c1.getTerminado() || !c2.getTerminado() || !pilas1[0].getTerminado() || !pilas1[1].getTerminado()
+            || !pilas1[2].getTerminado() || !pilas1[3].getTerminado() || !pilas1[4].getTerminado() || !pilas1[5].getTerminado()
+            || !pilas1[6].getTerminado() || !pilas2[0].getTerminado() || !pilas2[1].getTerminado() || !pilas2[2].getTerminado() || !pilas1[3].getTerminado()) {
+        cout << "    " << c1.dibujar(1) << "    " << c2.dibujar(2) << "   |   " << pilas1[0].Dibujar() << "    " << pilas1[1].Dibujar() << "    " << pilas1[2].Dibujar()
+                << "    " << pilas1[3].Dibujar() << "    " << pilas1[4].Dibujar() << "    " << pilas1[5].Dibujar() << "    " << pilas1[6].Dibujar()
+                << "   |   " << pilas2[0].Dibujar() << "    " << pilas2[1].Dibujar() << "    " << pilas2[2].Dibujar() << "    " << pilas2[3].Dibujar() << endl;
     }
 }
 
+void Juego::hacerMovimiento() {
+    cout << endl << endl << "que movimiento realizar?" << endl << "1) Mostrar Carta" << endl << "2) Mover Carta Descubierta" << endl << "3) Mover Cartas a otra Pila" << endl << "4) Mover Carta al Final" << endl << "5) Conocer Carta" << endl;
+    cout << "6) Rendirse" << endl;
+    int decision;
+    cin>>decision;
+    Carta *carta;
+    Carta *carta2;
+    int objetivo1;
+    int objetivo2;
+    switch (decision) {
+        case 1:
+            if (c1.cantidad == 0 && c2.cantidad != 0) {
+                while (c2.cantidad != 0) {
+                    c2.sacarUltima(carta);
+                    carta->setMostrando(false);
+                    c1.agregarCola(carta);
+                }
+            }
+            c1.sacarUltima(carta);
+            carta->setMostrando(true);
+            c2.agregarCola(carta);
+            Dibujar();
+            VerificarJuego();
+            break;
+        case 2:
+            if (c2.cantidad > 0) {
+                cout << "A que fila desea moverla? (1-7)" << endl;
+                cin>>objetivo1;
+                if (objetivo1 <= 7) {
+                    c2.obtenerCola(1, carta);
+                    pilas1[objetivo1 - 1].obtenerPila(1, carta2);
+                    if (carta2 == NULL || (carta->getColor() != carta2->getColor() && carta->getNumero() == (carta2->getNumero() - 1))) {
+                        c2.sacarUltima(carta);
+                        pilas1[objetivo1 - 1].agregarPila(carta);
+                        Dibujar();
+                    } else {
+                        cout << "Movimiento invalido" << endl;
+                    }
+                } else {
+                    cout << "No es una pila accesible" << endl;
+                }
+            } else {
+                cout << "No hay carta descubierta" << endl;
+            }
+            VerificarJuego();
+            break;
+        case 3:
+            Carta *ultima;
+            int cantidad;
+            cout << "De Que fila Desea Mover La Carta (1-7)" << endl;
+            cin>>objetivo1;
+            cout << "Numero de cartas" << endl;
+            cin>>cantidad;
+            cout << "A que fila Desea Moverlo? (1-7)" << endl;
+            cin>>objetivo2;
+            if (objetivo1 <= 7 && objetivo2 <= 7) {
+                pilas1[objetivo1 - 1].obtenerPila(cantidad, carta);
+                pilas1[objetivo2 - 1].obtenerPila(1, carta2);
+                if ((carta2 == NULL && carta != NULL) || (carta != NULL && (carta->getColor() != carta2->getColor()) && (carta->getNumero() == carta2->getNumero() - 1))) {
+                    if (carta->getMostrado()) {
+                        pilas1[objetivo1 - 1].sacarHilera(cantidad, carta, ultima);
+                        pilas1[objetivo2 - 1].agregarHilera(carta, ultima);
+                        Dibujar();
+                    }
+                } else {
+                    cout << "Movimiento invalido" << endl;
+                }
+            } else {
+                cout << "No es una pila accesible" << endl;
+            }
+            hacerMovimiento();
+            break;
+        case 4:
+            cout << "De Que fila mover al final? (1-7)" << endl;
+            cin>>objetivo1;
+            Carta *anterior;
+            pilas1[objetivo1 - 1].obtenerPila(1, carta);
+            if (carta != NULL) {
+                int valor = carta->getID();
+                if (valor == 1) {
+                    pilas2[0].obtenerPila(1, carta2);
+                    if (carta2 == NULL && carta->getNumero() == 1) {
+                        carta->getPrevius(anterior);
+                        if (anterior != NULL) {
+                            anterior->setMostrando(true);
+                        }
+                        pilas1[objetivo1 - 1].sacarPila(1, carta);
+                        pilas2[0].agregarPila(carta);
+                        Dibujar();
+                    } else if (carta2 != NULL && carta->getNumero() == carta2->getNumero() + 1) {
+                        carta->getPrevius(anterior);
+                        if (anterior != NULL) {
+                            anterior->setMostrando(true);
+                        }
+                        pilas1[objetivo1 - 1].sacarPila(1, carta);
+                        pilas2[0].agregarPila(carta);
+                        Dibujar();
+                    } else {
+                        cout << "Movimiento invalido" << endl;
+                    }
+                } else if (valor == 2) {
+                    pilas2[1].obtenerPila(1, carta2);
+                    if (carta2 == NULL && carta->getNumero() == 1) {
+                        carta->getPrevius(anterior);
+                        if (anterior != NULL) {
+                            anterior->setMostrando(true);
+                        }
+                        pilas1[objetivo1 - 1].sacarPila(1, carta);
+                        pilas2[1].agregarPila(carta);
+                        Dibujar();
+                    } else if (carta2 != NULL && carta->getNumero() == carta2->getNumero() + 1) {
+                        carta->getPrevius(anterior);
+                        if (anterior != NULL) {
+                            anterior->setMostrando(true);
+                        }
+                        pilas1[objetivo1 - 1].sacarPila(1, carta);
+                        pilas2[1].agregarPila(carta);
+                        Dibujar();
+                    } else {
+                        cout << "Movimiento invalido" << endl;
+                    }
+                } else if (valor == 3) {
+                    pilas2[2].obtenerPila(1, carta2);
+                    if (carta2 == NULL && carta->getNumero() == 1) {
+                        carta->getPrevius(anterior);
+                        if (anterior != NULL) {
+                            anterior->setMostrando(true);
+                        }
+                        pilas1[objetivo1 - 1].sacarPila(1, carta);
+                        pilas2[2].agregarPila(carta);
+                        Dibujar();
+                    } else if (carta2 != NULL && carta->getNumero() == carta2->getNumero() + 1) {
+                        carta->getPrevius(anterior);
+                        if (anterior != NULL) {
+                            anterior->setMostrando(true);
+                        }
+                        pilas1[objetivo1 - 1].sacarPila(1, carta);
+                        pilas2[2].agregarPila(carta);
+                        Dibujar();
+                    } else {
+                        cout << "Movimiento invalido" << endl;
+                    }
+                } else if (valor == 4) {
+                    pilas2[3].obtenerPila(1, carta2);
+                    if (carta2 == NULL && carta->getNumero() == 1) {
+                        carta->getPrevius(anterior);
+                        if (anterior != NULL) {
+                            anterior->setMostrando(true);
+                        }
+                        pilas1[objetivo1 - 1].sacarPila(1, carta);
+                        pilas2[3].agregarPila(carta);
+                        Dibujar();
+                    } else if (carta2 != NULL && carta->getNumero() == carta2->getNumero() + 1) {
+                        carta->getPrevius(anterior);
+                        if (anterior != NULL) {
+                            anterior->setMostrando(true);
+                        }
+                        pilas1[objetivo1 - 1].sacarPila(1, carta);
+                        pilas2[3].agregarPila(carta);
+                        Dibujar();
+                    } else {
+                        cout << "Movimiento invalido" << endl;
+                    }
+                }
+            } else {
+                cout << "Pila Vacia";
+            }
+            hacerMovimiento();
+            break;
+        case 5:
+            cout << "Que posicion quiere saber?" << endl;
+            cin>>objetivo1;
+            c1.obtenerCola(objetivo1, carta);
+            cout << endl;
+            hacerMovimiento();
+            break;
+        case 6:
+            cout << "gracias por jugar esta partida!!";
+            break;
+        default:
+            hacerMovimiento();
+    }
+}
 
-void Juego::hacerMovimiento(){
-    
+bool Juego::VerificarJuego() {
+    if (c1.cantidad == 0 && c2.cantidad == 0 && todasDescubiertas()) {
+        cout << "FELICIDADES ACABA DE GANAR" << endl << "FELICIDADES ACABA DE GANAR" << endl << "FELICIDADES ACABA DE GANAR" << endl << "FELICIDADES ACABA DE GANAR" << endl << endl << endl;
+        return true;
+    } else {
+        hacerMovimiento();
+        return false;
+    }
+
+}
+
+bool Juego::todasDescubiertas() {
+    int entero = 1;
+    bool f = true;
+    Carta *verificar;
+    for (int i = 0; i < 7; i++) {
+        pilas1[i].obtenerPila(entero, verificar);
+        while (verificar != NULL) {
+            if (!verificar->getMostrado()) {
+                f = false;
+            }
+            entero++;
+            pilas1[i].obtenerPila(entero, verificar);
+        }
+    }
+    return f;
 }
 /*
  * 

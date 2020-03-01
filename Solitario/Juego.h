@@ -16,6 +16,7 @@
 #include "Pila.h"
 #include "Cola.h"
 #include "Carta.h"
+#include "stdlib.h"
 
 class Juego {
 public:
@@ -28,20 +29,13 @@ public:
     void MoverCarta();
     void MoverColaPila();
     void MoverPilaFinal();
+    bool VerificarJuego();
+    bool todasDescubiertas();
 private:
     Cola c1 = Cola();
     Cola c2 = Cola();
-    Pila p1 = Pila();
-    Pila p2 = Pila();
-    Pila p3 = Pila();
-    Pila p4 = Pila();
-    Pila p5 = Pila();
-    Pila p6 = Pila();
-    Pila p7 = Pila();
-    Pila p8 = Pila();
-    Pila p9 = Pila();
-    Pila p10 = Pila();
-    Pila p11 = Pila();
+    Pila pilas1[7];
+    Pila pilas2[4];
 };
 
 #endif /* JUEGO_H */

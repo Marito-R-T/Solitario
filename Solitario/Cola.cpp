@@ -14,13 +14,14 @@
 #include "Cola.h"
 #include "Carta.h"
 
+using namespace std;
 
 Cola::~Cola() {
 }
 /* Sentencia de clases de COLA */
 
 void Cola::agregarCola(Carta *carta) {
-    if (primera == NULL) {
+    if (cantidad==0) {
         primera = carta;
         primera->setNext(NULL);
         primera->setPrevius(NULL);
@@ -43,39 +44,64 @@ void Cola::agregarCola(Carta *carta) {
     cantidad++;
 }
 
-void Cola::obtenerCola(int numero) {
+void Cola::obtenerCola(int numero, Carta *&carta) {
     if (numero > 0) {
-        Carta *siguiente = primera;
+        Carta *siguiente = ultima;
         for (int i = 0; i < numero - 1; i++) {
-            siguiente->getPrevius(siguiente);
+            siguiente->getNext(siguiente);
             if (siguiente == NULL) {
                 break;
             }
         }
         if (siguiente != NULL) {
-            cout << siguiente->getMostrado() << endl;
+            carta=siguiente;
+            cout << "En la posicion " << numero << " esta: " << siguiente->getValor() << " de " << siguiente->getTipo() << endl;
         } else {
+            carta = NULL;
             cout << "No hay carta en la posicion: " << numero << endl;
         }
     } else {
+        carta = NULL;
         cout << "ERROR" << endl;
     }
 }
 
-void Cola::sacarCola() {
+void Cola::sacarCola(Carta *&carta) {
     if (primera != NULL) {
+        carta = primera;
         Carta *segunda;
         primera->getPrevius(segunda);
-        cout << primera->getMostrado() << endl;
         primera->setPrevius(NULL);
         if (segunda != NULL) {
             segunda->setNext(NULL);
             primera = segunda;
         } else {
             ultima = NULL;
+            primera = NULL;
         }
         cantidad--;
     } else {
+        cout << "no hay nada" << endl;
+    }
+}
+
+void Cola::sacarUltima(Carta *&carta) {
+    if (cantidad != 0) {
+        carta = ultima;
+        Carta *pen;
+        ultima->getNext(pen);
+        ultima->setNext(NULL);
+        if (pen != NULL) {
+            pen->setPrevius(NULL);
+            ultima = pen;
+        } else {
+            ultima = NULL;
+            primera = NULL;
+        }
+        cantidad--;
+        
+    } else {
+        carta = NULL;
         cout << "no hay nada" << endl;
     }
 }

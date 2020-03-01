@@ -28,6 +28,8 @@ public:
     void sacarPila();
     void obtenerPila(int, Carta*&);
     void sacarPila(int, Carta *&);
+    void sacarHilera(int, Carta*&, Carta*&);
+    void agregarHilera(Carta*&, Carta*&);
 
     void setPosicion() {
         posicion = 1;

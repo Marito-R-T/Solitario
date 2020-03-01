@@ -56,9 +56,24 @@ build: .build-post
 .build-pre:
 # Add your pre 'build' code here...
 
-.build-post: .build-impl
+.build-post: .build-impl main.o Carta.o Cola.o Pila.o Juego.o
 # Add your post 'build' code here...
+	g++ main.o Carta.o Cola.o Pila.o Juego.o -o Solitario
 
+main.o: main.cpp
+	g++ -c main.cpp
+
+Juego.o: Juego.cpp
+	g++ -c Juego.cpp
+
+Pila.o: Pila.cpp
+	g++ -c Pila.cpp
+
+Cola.o: Cola.cpp
+	g++ -c Cola.cpp
+
+Carta.o: Carta.cpp
+	g++ -c Carta.cpp
 
 # clean
 clean: .clean-post
@@ -68,6 +83,7 @@ clean: .clean-post
 
 .clean-post: .clean-impl
 # Add your post 'clean' code here...
+	rm -rf *o ordenamientos
 
 
 # clobber

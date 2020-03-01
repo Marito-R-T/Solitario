@@ -22,9 +22,11 @@
 Carta::~Carta() {
 }
 
-Carta::Carta(int _color, string _tipo, string _valor, bool _mostrando) {
+Carta::Carta(int _color, string _tipo, string _valor, bool _mostrando, int _numero, int _id) {
     color = _color;
     tipo = _tipo;
     valor = _valor;
     mostrando = _mostrando;
+    numero = _numero;
+    id = _id;
 }
