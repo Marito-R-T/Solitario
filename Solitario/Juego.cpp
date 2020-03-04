@@ -158,9 +158,13 @@ void Juego::hacerMovimiento() {
                     c2.obtenerCola(1, carta);
                     pilas1[objetivo1 - 1].obtenerPila(1, carta2);
                     if (carta2 == NULL || (carta->getColor() != carta2->getColor() && carta->getNumero() == (carta2->getNumero() - 1))) {
-                        c2.sacarUltima(carta);
-                        pilas1[objetivo1 - 1].agregarPila(carta);
-                        Dibujar();
+                        if (carta2 != NULL || carta->getNumero() == 13) {
+                            c2.sacarUltima(carta);
+                            pilas1[objetivo1 - 1].agregarPila(carta);
+                            Dibujar();
+                        } else {
+                            cout << "Movimiento invalido" << endl;
+                        }
                     } else {
                         cout << "Movimiento invalido" << endl;
                     }
@@ -185,10 +189,12 @@ void Juego::hacerMovimiento() {
                 pilas1[objetivo1 - 1].obtenerPila(cantidad, carta);
                 pilas1[objetivo2 - 1].obtenerPila(1, carta2);
                 if ((carta2 == NULL && carta != NULL) || (carta != NULL && (carta->getColor() != carta2->getColor()) && (carta->getNumero() == carta2->getNumero() - 1))) {
-                    if (carta->getMostrado()) {
+                    if (carta->getMostrado() && (carta2 != NULL || carta->getNumero() == 13)) {
                         pilas1[objetivo1 - 1].sacarHilera(cantidad, carta, ultima);
                         pilas1[objetivo2 - 1].agregarHilera(carta, ultima);
                         Dibujar();
+                    } else {
+                        cout << "Movimiento invalido" << endl;
                     }
                 } else {
                     cout << "Movimiento invalido" << endl;
@@ -334,6 +340,7 @@ bool Juego::todasDescubiertas() {
             entero++;
             pilas1[i].obtenerPila(entero, verificar);
         }
+        entero = 1;
     }
     return f;
 }

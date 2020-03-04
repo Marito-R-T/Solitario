@@ -83,7 +83,7 @@ clean: .clean-post
 
 .clean-post: .clean-impl
 # Add your post 'clean' code here...
-	rm -rf *o ordenamientos
+	rm -rf *o Solitario
 
 
 # clobber
