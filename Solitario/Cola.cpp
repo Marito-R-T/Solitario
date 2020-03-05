@@ -17,6 +17,13 @@
 using namespace std;
 
 Cola::~Cola() {
+    for(int i =0; i<cantidad; i++){
+        Carta *carta;
+        sacarCola(carta);
+        if(carta != NULL){
+            carta->~Carta();
+        }
+    }
 }
 /* Sentencia de clases de COLA */
 

@@ -20,6 +20,7 @@
 #include <random>
 
 Carta::~Carta() {
+    
 }
 
 Carta::Carta(int _color, string _tipo, string _valor, bool _mostrando, int _numero, int _id) {

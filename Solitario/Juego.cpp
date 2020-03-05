@@ -24,7 +24,7 @@ Juego::~Juego() {
         pilas1[i].~Pila();
     }
     for (int i = 0; i < 4; i++) {
-        pilas1[i].~Pila();
+        pilas2[i].~Pila();
     }
 }
 
@@ -128,7 +128,7 @@ void Juego::Dibujar() {
 
 void Juego::hacerMovimiento() {
     cout << endl << endl << "que movimiento realizar?" << endl << "1) Mostrar Carta" << endl << "2) Mover Carta Descubierta" << endl << "3) Mover Cartas a otra Pila" << endl << "4) Mover Carta al Final" << endl << "5) Conocer Carta" << endl;
-    cout << "6) Rendirse" << endl;
+    cout << "6) Conocer Carta de Pilas (1-7)" << endl << "52) Rendirse" << endl;
     int decision;
     cin>>decision;
     Carta *carta;
@@ -309,6 +309,22 @@ void Juego::hacerMovimiento() {
             hacerMovimiento();
             break;
         case 6:
+            int pos;
+            cout << "De que pila quiere saber?" << endl;
+            cin >> objetivo1;
+            cout << "Que posición?" << endl;
+            cin >> pos;
+            if (objetivo1 > 0 && objetivo1 < 8) {
+                pilas1[objetivo1-1].obtenerPila(pos, carta);
+                if (carta != NULL) {
+                    cout << "En la posicion " << pos << " esta: " << carta->getValor() << " de " << carta->getTipo() << endl;
+                } else {
+                    cout << "No hay carta Disponible" << endl;
+                }
+            }
+            hacerMovimiento();
+            break;
+        case 52:
             cout << "gracias por jugar esta partida!!";
             break;
         default:

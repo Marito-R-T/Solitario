@@ -63,17 +63,17 @@ build: .build-post
 main.o: main.cpp
 	g++ -c main.cpp
 
-Juego.o: Juego.cpp
-	g++ -c Juego.cpp
+Juego.o: Juego.cpp Juego.h
+	g++ -c Juego.cpp Juego.h
 
-Pila.o: Pila.cpp
-	g++ -c Pila.cpp
+Pila.o: Pila.cpp Pila.h
+	g++ -c Pila.cpp Pila.h
 
-Cola.o: Cola.cpp
-	g++ -c Cola.cpp
+Cola.o: Cola.cpp Cola.h
+	g++ -c Cola.cpp Cola.h
 
-Carta.o: Carta.cpp
-	g++ -c Carta.cpp
+Carta.o: Carta.cpp Carta.h
+	g++ -c Carta.cpp Carta.h
 
 # clean
 clean: .clean-post

@@ -15,7 +15,13 @@
 #include "Carta.h"
 
 Pila::~Pila() {
-    Carta *carta;
+    for(int i =0; i<cantidad; i++){
+        Carta *carta;
+        sacarPila(1, carta);
+        if(carta != NULL){
+            carta->~Carta();
+        }
+    }
 }
 
 /* Sentencia de clases de PILA */
